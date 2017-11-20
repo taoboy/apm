@@ -1,0 +1,8 @@
+/.idea
+node_modules
+/config.js
+/website/public/bin
+/website/public/img
+/ecosystem.config.js
+/website/public/lib/vendor.dll.js
+/website/build/vendor-manifest.json

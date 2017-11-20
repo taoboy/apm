@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>YYFAX-APM</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[0] %>">
+    <!--<script type="text/javascript">window._trackJs = { token: '25e69a657d264f04943a6763edb15ac9' };</script>-->
+    <!--<script id="yyfaxapm-javascript-sdk" type="text/javascript" src="/lib/monitor.min.js?appid=nXSP4CLzKz"></script>-->
+    <!--<script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="/lib/vendor.dll.js"></script>
+    <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+</body>
+
+</html>

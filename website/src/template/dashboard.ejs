@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Node.js监控</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <!--<link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[0] %>">-->
+    <style>
+        #dashboard {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+
+        #dashboard h1 {
+            font-size: 3em;
+            color: #222222;
+            margin: 0;
+        }
+
+        #dashboard h5 {
+            margin: 0;
+            color: #888888;
+        }
+
+        #dashboard p {
+            font-size: 0.7em;
+            color: #888888;
+        }
+
+        #dashboard span {
+            cursor: pointer;
+            font-size: 10px;
+            margin-left: 5px;
+            border: 1px solid #DDD;
+            padding: 3px 10px 4px 10px;
+        }
+
+        #dashboard canvas {
+            width: 400px;
+            height: 100px;
+        }
+
+        #dashboard .active {
+            background: #eeeeee;
+        }
+
+        #dashboard .stats-column {
+            flex: 0 0 200px;
+        }
+
+        #dashboard .container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            height: 100px;
+        }
+
+        #dashboard .chart-container {
+            width: 400px;
+            height: 100px;
+        }
+
+        #dashboard .footer {
+            position: fixed;
+            margin: auto;
+            text-align: center;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        #dashboard .span-controls {
+            float: right;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.5.0/socket.io.min.js"></script>
+</head>
+
+<body>
+<div id="dashboard" style="width: 600px; margin: auto">
+    <div class="header">
+        <b>Node.js Status</b>
+        <p></p>
+        <b>当前Node节点ID :</b>
+        <b id="span-node"></b>
+        <div id="span-controls" class="span-controls">
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-column">
+            <h5>CPU Usage</h5>
+            <h1 id="cpuStat">- %</h1>
+        </div>
+        <div class="chart-container">
+            <canvas id="cpuChart" width="400" height="100"></canvas>
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-column">
+            <h5>Memory Usage</h5>
+            <h1 id="memStat">- %</h1>
+        </div>
+        <div class="chart-container">
+            <canvas id="memChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-column">
+            <h5>One Minute Load Avg</h5>
+            <h1 id="loadStat">-</h1>
+        </div>
+        <div class="chart-container">
+            <canvas id="loadChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-column">
+            <h5>Response Time</h5>
+            <h1 id="responseTimeStat">-</h1>
+        </div>
+        <div class="chart-container">
+            <canvas id="responseTimeChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+    <div class="container">
+        <div class="stats-column">
+            <h5>Requests per Second</h5>
+            <h1 id="rpsStat">-</h1>
+        </div>
+        <div class="chart-container">
+            <canvas id="rpsChart" width="200" height="100"></canvas>
+        </div>
+    </div>
+</div>
+
+<div id="app"></div>
+
+<script type="text/javascript" src="./lib/vendor.dll.js"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
+<script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[1] %>"></script>
+<script type="text/javascript" src="./tmp/koa-monitor-frontend.js"></script>
+</body>
+
+</html>
